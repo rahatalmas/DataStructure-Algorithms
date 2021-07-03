@@ -3,7 +3,6 @@ using namespace std;
 #define ll long long int
 #define loop(i,a,b) for(ll i=(a);i<(b);i++)
 
-
 struct Node{
     int data;
     struct Node* next;
@@ -22,6 +21,7 @@ void insertTail(Node ** headref,int x){
    new_node->next=NULL;
    if(*headref == NULL){
        * headref = new_node;
+       return;
    }
    Node * temp= *headref;
    while(temp->next != NULL){
