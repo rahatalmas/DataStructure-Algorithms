@@ -9,7 +9,7 @@ class Graph{
          this->V=V;
          adj = new std::list<int>[V];
      }
-     void add_edge(int u,int v);#include<bits/stdc++.h>
+     void add_edge(int u,int v);
 #define vi std::vector
 #define pb push_back
 #define eb emplace_back
