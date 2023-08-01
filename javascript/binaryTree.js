@@ -20,7 +20,6 @@ class BinaryTree{
         l.push(this.root);
         while(l.length != 0){
             let temp = l.shift();
-            console.log(temp);
             if(temp.left == null){
                 temp.left = new_node;
                 return;
@@ -34,15 +33,42 @@ class BinaryTree{
                 l.push(temp.right);
             }
         }
-        //return;
+    }
+    inorderPrint(root = this.root){
+        if(root == null){
+            return;
+        }
+        this.inorderPrint(root.left);
+        console.log(root.value);
+        this.inorderPrint(root.right);
+    }
+    preoderPrint(root = this.root){
+        if(root == null){
+            return;
+        }
+        console.log(root.value);
+        this.preoderPrint(root.left);
+        this.preoderPrint(root.right);
+    }
+    postorderPrint(root = this.root){
+        if(root == null){
+            return;
+        }
+        this.postorderPrint(root.left);
+        this.postorderPrint(root.right);
+        console.log(root.value);
     }
 }
 
 
 let bt = new BinaryTree();
-//bt.insert(5);
-//bt.insert(6);
-for(let i=0;i<10;i++){
+for(let i=1;i<10;i++){
     bt.insert(i);
 }
-console.log(bt);
+//console.log(bt);
+console.log("inorder Traversal -> ");
+bt.inorderPrint();
+console.log("preorder Traversal -> ");
+bt.preoderPrint();
+console.log("postorder Traversal -> ");
+bt.postorderPrint();
