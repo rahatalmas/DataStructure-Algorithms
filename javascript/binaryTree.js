@@ -9,6 +9,7 @@ class Node{
 class BinaryTree{
     constructor(){
         this.root = null;
+        this.height = 0;
     }
     insert(value){
         let new_node = new Node(value);
@@ -58,11 +59,42 @@ class BinaryTree{
         this.postorderPrint(root.right);
         console.log(root.value);
     }
+    levelorderPrint(){
+        if(this.root == null){
+            console.log("no data");
+        }
+        let temp = this.root;
+        let l = [];
+        l.push(temp);
+        while(l.length != 0){
+            let crnt_node = l.shift();
+            console.log(crnt_node.value);
+            if(crnt_node.left != null){
+                l.push(crnt_node.left);
+            }
+            if(crnt_node.right != null){
+                l.push(crnt_node.right)
+            }
+        }
+        return;
+    }
+    treeHeight(root = this.root){
+        if(root == null){
+            return 0;
+        }
+        let l = this.treeHeight(root.left);
+        let r = this.treeHeight(root.right);
+        if(l>r){
+            return l+1;
+        }else{
+            return r+1;
+        }
+    }
 }
 
 
 let bt = new BinaryTree();
-for(let i=1;i<10;i++){
+for(let i=1;i<=9;i++){
     bt.insert(i);
 }
 //console.log(bt);
@@ -72,3 +104,6 @@ console.log("preorder Traversal -> ");
 bt.preoderPrint();
 console.log("postorder Traversal -> ");
 bt.postorderPrint();
+console.log("level order Traversal -> ");
+bt.levelorderPrint();
+console.log("height of the tree is -> " + bt.treeHeight());
