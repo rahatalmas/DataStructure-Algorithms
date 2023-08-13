@@ -28,7 +28,7 @@ int main(){
         }
         if(flag){
             int mid = (v[fidx]-v[sidx])/2;
-            cout << mid+1 << endl;
+            cout << mid+1 << endl;xt
         }else{
             cout << 0 << endl;
         }
