@@ -8,7 +8,7 @@ void add_edge(int u,int v){
     g[v].push_back(u);
 }
 
-void dfs(vector<bool>visited,int v){
+void dfs(vector<bool>&visited,int v){
    visited[v] = true;
    cout << v <<"->";
    for(auto x:g[v]){
@@ -18,8 +18,21 @@ void dfs(vector<bool>visited,int v){
    }
 }
 
-void bfs(vector<bool>visited,int v){
-
+void bfs(vector<bool>&visited,int v){
+   queue<int>q;
+   visited[v] = true;
+   q.push(v);
+   while(!q.empty()){
+      int crnt = q.front();
+      cout << crnt << "->";
+      q.pop();
+      for(auto x:g[crnt]){
+          if(!visited[x]){
+            visited[x] = true;
+            q.push(x);
+          }
+      }
+   }
 }
 
 void traverse(){
@@ -31,7 +44,7 @@ void traverse(){
     cin >> o;
     if(o==1){
         dfs(visited,0);
-    }else{
+    }else if(o==2){
         bfs(visited,0);
     }
 }
